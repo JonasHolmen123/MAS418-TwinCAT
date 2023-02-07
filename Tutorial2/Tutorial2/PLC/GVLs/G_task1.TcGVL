@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="G_task1" Id="{87dfb9aa-049c-4369-a5f4-e942c937a600}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	dtVariable: DATE_AND_TIME := DT#2020-04-04-05:31:19;
+	dtTime : TIME := T#10S;
+	sensor1 : DUT; 
+	sensor2  : DUT;
+	bStart : BOOL := TRUE;
+	bQ : BOOL := TRUE;
+	fbTon: TON:= (PT:=T#10S);
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

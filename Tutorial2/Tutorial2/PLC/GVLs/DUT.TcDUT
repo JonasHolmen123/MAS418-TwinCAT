@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="DUT" Id="{5192be19-3911-48b8-8692-ecab4bdd4558}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE DUT :
+(
+	Sick := 1,
+	Pilz := 2,
+	Parker :=3,
+ 	Bosch := 4
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

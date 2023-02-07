@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="P_task1" Id="{2513bc1a-9bda-4e20-870a-42628bd3926e}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_task1
+VAR
+	pPointer: POINTER TO DATE_AND_TIME := ADR(dtVariable);
+	nRef_Time: REFERENCE TO TIME REF=dtTime;
+	aDates: ARRAY[1..4] OF DATE_AND_TIME := [DT#2023-02-07-00:00:00,DT#2023-02-08-00:00:00,DT#2023-02-09-00:00:00,DT#2023-02-10-00:00:00];
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[pPointer^:= DT#2023-04-04-05:31:19;
+// nRef_Time:= T#1S;
+aDates[3]:=DT#2023-02-25-00:00:00;
+G_task1.sensor1:= DUT.Bosch;
+G_task1.sensor2:= DUT.Parker;
+
+fbTon(IN:= G_task1.bQ);
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
