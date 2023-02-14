@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Refactors>
+  <Renames>
+    <RenamedType>
+      <Type guid="e23d42df-24a4-4959-9633-c893292811c6">ST_STRUCK</Type>
+      <From>ST_struck</From>
+      <To>ST_timer</To>
+    </RenamedType>
+  </Renames>
+</Refactors>

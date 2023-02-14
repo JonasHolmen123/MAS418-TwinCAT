@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="G_task2" Id="{23487ebd-7a32-4586-9594-69091bf7ec75}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	 stTimer2 : ST_timer := (tTimer := T#5S); 
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
