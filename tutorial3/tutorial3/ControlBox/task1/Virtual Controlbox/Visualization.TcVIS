@@ -724,7 +724,7 @@
                     </o>
                     <o>
                       <v n="Id">743958181L</v>
-                      <v n="Value">"task1.bOff"</v>
+                      <v n="Value">"task1.bOn"</v>
                     </o>
                   </l>
                 </o>
@@ -2102,7 +2102,7 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"AUTO"</v>
+                      <v n="Value">"Manual"</v>
                     </o>
                     <o>
                       <v n="Id">3729828405L</v>
@@ -2145,7 +2145,7 @@
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"996"</v>
+                      <v n="Value">"136"</v>
                     </o>
                   </l>
                 </o>
@@ -2231,7 +2231,7 @@
                     </o>
                     <o>
                       <v n="Id">390574330L</v>
-                      <v n="Value">"MANUAL"</v>
+                      <v n="Value">"Auto"</v>
                     </o>
                     <o>
                       <v n="Id">3729828405L</v>
@@ -2274,7 +2274,7 @@
                     </o>
                     <o>
                       <v n="Id">823443203L</v>
-                      <v n="Value">"632"</v>
+                      <v n="Value">"995"</v>
                     </o>
                   </l>
                 </o>
@@ -2441,7 +2441,7 @@
             </o>
             <v n="DialogDut">{59290dfc-7139-4cb7-9b05-5a44ce9e1ff2}</v>
           </o>
-          <v n="LastUsedIdForIdentifier">27</v>
+          <v n="LastUsedIdForIdentifier">28</v>
           <o n="TextDocument" t="TextDocument">
             <a n="TextLines" cet="TextLine">
               <o>

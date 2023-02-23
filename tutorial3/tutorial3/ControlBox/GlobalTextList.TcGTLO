@@ -11,6 +11,21 @@
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>
+              <v n="TextID">"995"</v>
+              <v n="TextDefault">"Auto"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"898"</v>
+              <v n="TextDefault">"JOY X"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"726"</v>
+              <v n="TextDefault">"JOY Y"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
               <v n="TextID">"620"</v>
               <v n="TextDefault">"Joystick X"</v>
               <l n="LanguageTexts" t="ArrayList" />
@@ -28,6 +43,11 @@
             <o>
               <v n="TextID">"632"</v>
               <v n="TextDefault">"MANUAL"</v>
+              <l n="LanguageTexts" t="ArrayList" />
+            </o>
+            <o>
+              <v n="TextID">"136"</v>
+              <v n="TextDefault">"Manual"</v>
               <l n="LanguageTexts" t="ArrayList" />
             </o>
             <o>

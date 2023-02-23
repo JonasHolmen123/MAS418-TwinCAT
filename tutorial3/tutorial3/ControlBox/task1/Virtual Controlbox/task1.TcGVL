@@ -6,6 +6,8 @@ VAR_GLOBAL
 	bStart : BOOL;
 	bStop : BOOL;
 	bTopSwitch : BOOL;
+	bManual : BOOL;
+	bOn : BOOL;
 	eModeSwitch : E_Modes;
 END_VAR
 ]]></Declaration>

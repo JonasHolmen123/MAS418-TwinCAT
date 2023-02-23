@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="ControlBox" Id="{c124393c-9a45-48d1-993d-3fe0a50c48f8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK ControlBox
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+CASE task1.eModeSwitch OF    // Mode selector 
+	E_Modes.Off:
+		IF task1.bManual THEN
+			task1.eModeSwitch := E_Modes.Manual;
+		ELSIF NOT(task1.bManual) THEN
+			task1.eModeSwitch := E_Modes.Auto;
+		END_IF
+	E_Modes.Auto:
+		IF NOT(task1.bOn) THEN
+			task1.eModeSwitch := E_Modes.Off;
+		ELSIF task1.bManual THEN
+			task1.eModeSwitch := E_Modes.Manual;
+		END_IF
+	E_Modes.Manual:
+		IF NOT(task1.bOn) THEN
+			task1.eModeSwitch := E_Modes.Off;
+		ELSIF NOT(task1.bManual) AND task1.bOn THEN
+			task1.eModeSwitch := E_Modes.Auto;
+		END_IF
+ELSE
+		task1.eModeSwitch := E_Modes.Auto;
+END_CASE
+ 
+
+
+
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>
