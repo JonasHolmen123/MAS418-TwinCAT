@@ -10,7 +10,7 @@
 		</System>
 		<Plc>
 			<Project GUID="{E7EE664F-75CC-4B59-AB51-29801E0EEFC3}" Name="ControlBox" PrjFilePath="ControlBox\ControlBox.plcproj" TmcFilePath="ControlBox\ControlBox.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
-				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{20F36B8E-6A06-CBD8-7762-C73A68BEA505}">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="ControlBox\ControlBox.tmc" TmcHash="{5B8D24B8-78D4-DAF7-CAAF-6318D0A2C4CE}">
 					<Name>ControlBox Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Contexts>

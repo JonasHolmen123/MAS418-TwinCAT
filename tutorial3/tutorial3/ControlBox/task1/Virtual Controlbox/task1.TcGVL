@@ -9,6 +9,10 @@ VAR_GLOBAL
 	bManual : BOOL;
 	bOn : BOOL;
 	eModeSwitch : E_Modes;
+	eStatus : E_Status;
+	nJoyX : INT;
+	nJoyY : INT;
+	bError : BOOL := FALSE;
 END_VAR
 ]]></Declaration>
   </GVL>

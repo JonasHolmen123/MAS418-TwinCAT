@@ -10,18 +10,17 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[
-CASE task1.eModeSwitch OF    // Mode selector 
+      <ST><![CDATA[CASE task1.eModeSwitch OF    // Mode selector 
 	E_Modes.Off:
-		IF task1.bManual THEN
+		IF task1.bManual AND task1.bOn THEN
 			task1.eModeSwitch := E_Modes.Manual;
-		ELSIF NOT(task1.bManual) THEN
+		ELSIF NOT(task1.bManual) AND task1.bOn THEN
 			task1.eModeSwitch := E_Modes.Auto;
 		END_IF
 	E_Modes.Auto:
 		IF NOT(task1.bOn) THEN
 			task1.eModeSwitch := E_Modes.Off;
-		ELSIF task1.bManual THEN
+		ELSIF task1.bManual AND task1.bOn THEN
 			task1.eModeSwitch := E_Modes.Manual;
 		END_IF
 	E_Modes.Manual:
@@ -31,8 +30,60 @@ CASE task1.eModeSwitch OF    // Mode selector
 			task1.eModeSwitch := E_Modes.Auto;
 		END_IF
 ELSE
-		task1.eModeSwitch := E_Modes.Auto;
+		task1.eModeSwitch := E_Modes.Off;
 END_CASE
+
+CASE task1.eStatus OF
+	E_Status.Fault:										///////// FAULT
+		IF NOT(task1.bError) THEN
+			task1.eStatus := E_Status.Ready;       
+		ELSIF task1.eModeSwitch = E_Modes.Off THEN
+			task1.eStatus := E_Status.NotReady;
+		END_IF										///////// NOTREADY
+	E_Status.NotReady:
+		IF task1.eModeSwitch = E_Modes.Manual OR task1.eModeSwitch = E_modes.Auto THEN 
+			task1.eStatus := E_Status.Ready;
+		END_IF
+	E_Status.Ready:										///////// READY
+		IF task1.bStart THEN
+			task1.eStatus:= E_Status.Starting;
+		ELSIF task1.bError THEN
+			task1.eStatus := E_Status.Fault;
+		ELSIF task1.eModeSwitch = E_Modes.Off THEN
+			task1.eStatus := E_Status.NotReady;
+		END_IF
+	E_Status.Running:									///////// Running
+		IF task1.bError THEN
+			task1.eStatus := E_Status.Fault;
+		ELSIF task1.eModeSwitch = E_Modes.Manual AND NOT(task1.bStop) THEN
+			task1.bStart:=TRUE;
+		ELSIF task1.eModeSwitch = E_Modes.Auto AND NOT(task1.bStart) THEN
+			task1.eStatus:= E_Status.Ready;
+		ELSIF task1.eModeSwitch = E_Modes.Off THEN
+			task1.eStatus := E_Status.NotReady;
+		ELSIF task1.bStop THEN
+			task1.bStart:=FALSE;			
+			task1.eStatus := E_Status.Stopping;
+
+		END_IF
+	E_Status.Starting:							///////// starting
+		task1.eStatus:= E_Status.Running;
+		IF task1.bError THEN
+			task1.eStatus := E_Status.Fault;
+		ELSIF task1.eModeSwitch = E_Modes.Off THEN
+			task1.eStatus := E_Status.NotReady;
+		END_IF
+	E_Status.Stopping:							///////// Stopping
+		task1.eStatus := E_Status.Ready;
+		IF task1.bError THEN
+			task1.eStatus := E_Status.Fault;
+		ELSIF task1.eModeSwitch = E_Modes.Off THEN
+			task1.eStatus := E_Status.NotReady;
+		END_IF
+ELSE
+	task1.eStatus := E_Status.NotReady;
+END_CASE
+ 
  
 
 
