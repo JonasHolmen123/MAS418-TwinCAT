@@ -5,12 +5,17 @@
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
+	fJoystickY : LREAL;
+	fJoystickX : LREAL;
 END_VAR
 VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[CASE task1.eModeSwitch OF    // Mode selector 
+      <ST><![CDATA[
+//////////////////////////////////////  MODESELECTOR   ///////////////////////
+
+CASE task1.eModeSwitch OF    
 	E_Modes.Off:
 		IF task1.bManual AND task1.bOn THEN
 			task1.eModeSwitch := E_Modes.Manual;
@@ -33,18 +38,23 @@ ELSE
 		task1.eModeSwitch := E_Modes.Off;
 END_CASE
 
+
+
+
+////////////////////////////////   STATUS ///////////////////////////
+
 CASE task1.eStatus OF
-	E_Status.Fault:										///////// FAULT
+	E_Status.Fault:									
 		IF NOT(task1.bError) THEN
 			task1.eStatus := E_Status.Ready;       
 		ELSIF task1.eModeSwitch = E_Modes.Off THEN
 			task1.eStatus := E_Status.NotReady;
-		END_IF										///////// NOTREADY
+		END_IF										
 	E_Status.NotReady:
 		IF task1.eModeSwitch = E_Modes.Manual OR task1.eModeSwitch = E_modes.Auto THEN 
 			task1.eStatus := E_Status.Ready;
 		END_IF
-	E_Status.Ready:										///////// READY
+	E_Status.Ready:										
 		IF task1.bStart THEN
 			task1.eStatus:= E_Status.Starting;
 		ELSIF task1.bError THEN
@@ -52,7 +62,7 @@ CASE task1.eStatus OF
 		ELSIF task1.eModeSwitch = E_Modes.Off THEN
 			task1.eStatus := E_Status.NotReady;
 		END_IF
-	E_Status.Running:									///////// Running
+	E_Status.Running:								
 		IF task1.bError THEN
 			task1.eStatus := E_Status.Fault;
 		ELSIF task1.eModeSwitch = E_Modes.Manual AND NOT(task1.bStop) THEN
@@ -66,14 +76,14 @@ CASE task1.eStatus OF
 			task1.eStatus := E_Status.Stopping;
 
 		END_IF
-	E_Status.Starting:							///////// starting
+	E_Status.Starting:							
 		task1.eStatus:= E_Status.Running;
 		IF task1.bError THEN
 			task1.eStatus := E_Status.Fault;
 		ELSIF task1.eModeSwitch = E_Modes.Off THEN
 			task1.eStatus := E_Status.NotReady;
 		END_IF
-	E_Status.Stopping:							///////// Stopping
+	E_Status.Stopping:							
 		task1.eStatus := E_Status.Ready;
 		IF task1.bError THEN
 			task1.eStatus := E_Status.Fault;
@@ -83,8 +93,18 @@ CASE task1.eStatus OF
 ELSE
 	task1.eStatus := E_Status.NotReady;
 END_CASE
+
+
+/////////////////////  JOYSTICK    //////////////////////////////////
  
- 
+IF task1.eModeSwitch = E_Modes.Manual AND task1.eStatus = E_Status.Running THEN
+	fJoystickY := task1.fJoystickY;
+	fJoystickX := task1.fJoystickX;
+	
+ELSE
+	fJoystickY := 0.0;
+	fJoystickX := 0.0;
+END_IF
 
 
 

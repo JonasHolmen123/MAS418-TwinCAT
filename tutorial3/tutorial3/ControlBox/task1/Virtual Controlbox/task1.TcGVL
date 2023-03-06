@@ -10,10 +10,9 @@ VAR_GLOBAL
 	bOn : BOOL;
 	eModeSwitch : E_Modes;
 	eStatus : E_Status;
-	nJoyX : INT;
-	nJoyY : INT;
+	fJoystickX : LREAL;
+	fJoystickY : LREAL;
 	bError : BOOL := FALSE;
-	bHei :BOOL;
 END_VAR
 ]]></Declaration>
   </GVL>
