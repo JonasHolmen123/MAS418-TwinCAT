@@ -8,15 +8,12 @@ VAR_GLOBAL
 	bTopSwitch : BOOL;
 	bManual : BOOL;
 	bOn : BOOL;
-<<<<<<< HEAD
-    eMode : E_modes;
-	eStatus : E_Status;
-	fJoystickX : LREAL;
-	fJoystickY : LREAL;
-	bError : BOOL := FALSE;
-=======
 	eModeSwitch : E_Modes;
->>>>>>> parent of 03fe425 (HMI status ferdig)
+	eStatus : E_Status;
+	nJoyX : INT;
+	nJoyY : INT;
+	bError : BOOL := FALSE;
+	bHei :BOOL;
 END_VAR
 ]]></Declaration>
   </GVL>
