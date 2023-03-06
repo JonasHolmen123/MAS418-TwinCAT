@@ -2104,7 +2104,7 @@
                     </o>
                     <o>
                       <v n="Id">397264524L</v>
-                      <v n="Value">"task1.nJoyY"</v>
+                      <v n="Value">"task1.fJoystickY"</v>
                     </o>
                     <o>
                       <v n="Id">3352862552L</v>
@@ -2524,7 +2524,7 @@
                     </o>
                     <o>
                       <v n="Id">397264524L</v>
-                      <v n="Value">"task1.nJoyX"</v>
+                      <v n="Value">"task1.fJoystickX"</v>
                     </o>
                     <o>
                       <v n="Id">3352862552L</v>
@@ -3192,9 +3192,7 @@
                     </o>
                     <o>
                       <v n="Id">494569607L</v>
-                      <l n="Value" t="ArrayList" cet="UInt32">
-                        <v>4294243572</v>
-                      </l>
+                      <v n="Value">16053492U</v>
                     </o>
                     <o>
                       <v n="Id">2812299069L</v>
@@ -3268,7 +3266,7 @@
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
-                      <v n="Value">150</v>
+                      <v n="Value">149</v>
                     </o>
                     <o>
                       <v n="Id">2134141914L</v>
@@ -3630,9 +3628,7 @@
                     </o>
                     <o>
                       <v n="Id">494569607L</v>
-                      <l n="Value" t="ArrayList" cet="UInt32">
-                        <v>4294243572</v>
-                      </l>
+                      <v n="Value">16053492U</v>
                     </o>
                     <o>
                       <v n="Id">2812299069L</v>
@@ -3748,7 +3744,7 @@
                     </o>
                     <o>
                       <v n="Id">2477733581L</v>
-                      <v n="Value">"task1.eModeSwitch"</v>
+                      <v n="Value">"task1.eMode"</v>
                     </o>
                     <o>
                       <v n="Id">823443203L</v>

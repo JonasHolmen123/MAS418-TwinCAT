@@ -8,10 +8,10 @@ VAR_GLOBAL
 	bTopSwitch : BOOL;
 	bManual : BOOL;
 	bOn : BOOL;
-	eModeSwitch : E_Modes;
+    eMode : E_modes;
 	eStatus : E_Status;
-	nJoyX : INT;
-	nJoyY : INT;
+	fJoystickX : LREAL;
+	fJoystickY : LREAL;
 	bError : BOOL := FALSE;
 END_VAR
 ]]></Declaration>

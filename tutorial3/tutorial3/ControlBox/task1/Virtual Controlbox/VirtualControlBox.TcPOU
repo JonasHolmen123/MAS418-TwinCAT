@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="VirtualControlBox" Id="{f0f8aad7-1457-40e9-8dc0-7375492486ae}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK VirtualControlBox IMPLEMENTS I_ControlBox
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Modeselector" Id="{a8d1eb32-ffc1-4886-b092-e36fc73d5cdc}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD Modeselector
+VAR_OUTPUT
+	eMode	: E_Modes;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE eMode OF    // Mode selector 
+	E_Modes.Off:
+		IF task1.bManual AND task1.bOn THEN
+			eMode := E_Modes.Manual;
+		ELSIF NOT(task1.bManual) AND task1.bOn THEN
+			eMode := E_Modes.Auto;
+		END_IF
+	E_Modes.Auto:
+		IF NOT(task1.bOn) THEN
+			eMode := E_Modes.Off;
+		ELSIF task1.bManual AND task1.bOn THEN
+			eMode := E_Modes.Manual;
+		END_IF
+	E_Modes.Manual:
+		IF NOT(task1.bOn) THEN
+			eMode := E_Modes.Off;
+		ELSIF NOT(task1.bManual) AND task1.bOn THEN
+			eMode := E_Modes.Auto;
+		END_IF
+ELSE
+		eMode := E_Modes.Off;
+END_CASE
+]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

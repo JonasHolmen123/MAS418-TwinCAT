@@ -35,6 +35,12 @@
     <Compile Include="task1\Virtual Controlbox\E_Modes.TcDUT">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="task1\Virtual Controlbox\INterface\I_ControlBox.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="task1\Virtual Controlbox\VirtualControlBox.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="task1\Virtual Controlbox\task1.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
@@ -51,6 +57,7 @@
     <Folder Include="task1" />
     <Folder Include="POUs" />
     <Folder Include="task1\Virtual Controlbox" />
+    <Folder Include="task1\Virtual Controlbox\INterface" />
   </ItemGroup>
   <ItemGroup>
     <PlaceholderReference Include="System_VisuElemMeter">
