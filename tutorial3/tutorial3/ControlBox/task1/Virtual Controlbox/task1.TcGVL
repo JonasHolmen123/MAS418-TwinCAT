@@ -13,6 +13,7 @@ VAR_GLOBAL
 	nJoyX : INT;
 	nJoyY : INT;
 	bError : BOOL := FALSE;
+	bHei :BOOL;
 END_VAR
 ]]></Declaration>
   </GVL>
