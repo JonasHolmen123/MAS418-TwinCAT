@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_controlbox" Id="{2b2d759b-7fa9-4960-9736-78b546a31051}">
+    <Declaration><![CDATA[INTERFACE I_controlbox
+]]></Declaration>
+    <Method Name="Buttons" Id="{0b6b3e9b-d587-4be8-9ae6-7e8479dfeaa1}">
+      <Declaration><![CDATA[METHOD Buttons
+VAR_INPUT
+	eModes : E_Modes;
+	eState : E_Status;
+END_VAR
+VAR_OUTPUT
+	bStart : BOOL;
+	bStop : BOOL;
+END_VAR
+]]></Declaration>
+    </Method>
+    <Method Name="Joystick" Id="{e1f1fa24-19cd-4495-ac12-8e0b27bf7443}">
+      <Declaration><![CDATA[METHOD Joystick
+VAR_INPUT
+	eModes : E_Modes;
+	eState : E_Status; 
+END_VAR
+VAR_OUTPUT
+	fJoystickY: LREAL;
+	fJoystickX: LREAL; 
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="Lamps" Id="{2f5afd2b-8ab0-44d1-9323-f455b7d526e6}">
+      <Declaration><![CDATA[METHOD Lamps
+VAR_INPUT
+	eModes : E_Modes;
+	eState : E_Status;
+END_VAR
+VAR_OUTPUT
+	
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="Mode" Id="{36e407a8-a47d-42cc-bcf6-90cf5c563a78}">
+      <Declaration><![CDATA[METHOD Mode
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+	eModes : E_Modes; 
+END_VAR]]></Declaration>
+    </Method>
+    <Method Name="State" Id="{7c77a9ea-a1b9-496f-b215-fe44ea4b5301}">
+      <Declaration><![CDATA[METHOD State
+VAR_INPUT
+	eModes : E_Modes;
+END_VAR
+VAR_OUTPUT
+	eState : E_Status;	
+END_VAR]]></Declaration>
+    </Method>
+  </Itf>
+</TcPlcObject>

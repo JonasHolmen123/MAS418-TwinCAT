@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Controlbox" Id="{2cd6bccb-390e-458d-b579-143a077dcf5b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Controlbox
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+	eModes : E_Modes;
+	eState : E_Status;
+END_VAR
+VAR
+	fbJoystickScaled : FB_JoystickNorm;
+	fbVirtualcontrolbox : FB_virtualcontrolbox; 
+	fbSelectedControlbox : I_controlbox := fbVirtualcontrolbox;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+fbJoystickScaled( fRawInput := task1.fJoystickX, fOutput => task1.fJoyXNormalized);
+fbJoystickScaled( fRawInput := task1.fJoystickY, fOutput => task1.fJoyYNormalized);
+
+
+fbSelectedControlbox.Mode(eModes => eModes);
+
+fbSelectedControlbox.State(eModes := eModes, eState=>task1.eState);
+
+
+
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

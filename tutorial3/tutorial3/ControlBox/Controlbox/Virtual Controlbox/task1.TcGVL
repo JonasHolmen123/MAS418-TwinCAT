@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <GVL Name="task1" Id="{94ceed5f-9cf7-441b-a5a5-289e85e116de}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	bStart : BOOL;
+	bStop : BOOL;
+	bTopSwitch : BOOL;
+	bManual : BOOL;
+	bOn : BOOL;
+	eModeSwitch : E_Modes;
+	eModes : E_Modes;
+	eState : E_Status;
+	eStatus : E_Status;
+	fJoystickX : LREAL;
+	fJoystickY : LREAL;
+	bError : BOOL := FALSE;
+	fJoyXNormalized : LREAL;
+	fJoyYNormalized : LREAL;
+END_VAR
+]]></Declaration>
+  </GVL>
+</TcPlcObject>

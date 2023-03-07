@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_JoystickNorm" Id="{9453efa8-dfef-4504-8f5a-d370aad3f932}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_JoystickNorm
+VAR_INPUT
+	fRawInput : LREAL;
+END_VAR
+VAR_OUTPUT
+	fJoystickScaled : LREAL;
+	stJoystickScaling : ST_JoystickScaling;
+	fOutput : LREAL;
+END_VAR
+VAR
+
+
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF fRawInput > (stJoystickScaling.fNeutralInputValue+stJoystickScaling.fNeutralDeadband) THEN
+	fOutput := (fRawInput-stJoystickScaling.fNeutralInputValue)/(stJoystickScaling.fMaxInputValue-stJoystickScaling.fNeutralInputValue);
+ELSIF fRawinput<(stJoystickScaling.fNeutralInputValue-stJoystickScaling.fNeutralDeadband)THEN
+	fOutput := -(stJoystickScaling.fNeutralInputValue-fRawInput)/(stJoystickScaling.fNeutralInputValue-stJoystickScaling.fMinInputValue);
+ELSE
+	fOutput := 0.0;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_VurtualControlBox" Id="{c124393c-9a45-48d1-993d-3fe0a50c48f8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_VurtualControlBox
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+	fJoystickY : LREAL;
+	fJoystickX : LREAL;
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+//////////////////////////////////////  MODESELECTOR   ///////////////////////
+
+CASE task1.eModeSwitch OF    
+	E_Modes.Off:
+		IF task1.bManual AND task1.bOn THEN
+			task1.eModeSwitch := E_Modes.Manual;
+		ELSIF NOT(task1.bManual) AND task1.bOn THEN
+			task1.eModeSwitch := E_Modes.Auto;
+		END_IF
+	E_Modes.Auto:
+		IF NOT(task1.bOn) THEN
+			task1.eModeSwitch := E_Modes.Off;
+		ELSIF task1.bManual AND task1.bOn THEN
+			task1.eModeSwitch := E_Modes.Manual;
+		END_IF
+	E_Modes.Manual:
+		IF NOT(task1.bOn) THEN
+			task1.eModeSwitch := E_Modes.Off;
+		ELSIF NOT(task1.bManual) AND task1.bOn THEN
+			task1.eModeSwitch := E_Modes.Auto;
+		END_IF
+ELSE
+		task1.eModeSwitch := E_Modes.Off;
+END_CASE
+
+
+
+
+////////////////////////////////   STATUS ///////////////////////////
+
+CASE task1.eStatus OF
+	E_Status.Fault:									
+		IF NOT(task1.bError) THEN
+			task1.eStatus := E_Status.Ready;       
+		ELSIF task1.eModeSwitch = E_Modes.Off THEN
+			task1.eStatus := E_Status.NotReady;
+		END_IF										
+	E_Status.NotReady:
+		IF task1.eModeSwitch = E_Modes.Manual OR task1.eModeSwitch = E_modes.Auto THEN 
+			task1.eStatus := E_Status.Ready;
+		END_IF
+	E_Status.Ready:										
+		IF task1.bStart THEN
+			task1.eStatus:= E_Status.Starting;
+		ELSIF task1.bError THEN
+			task1.eStatus := E_Status.Fault;
+		ELSIF task1.eModeSwitch = E_Modes.Off THEN
+			task1.eStatus := E_Status.NotReady;
+		END_IF
+	E_Status.Running:								
+		IF task1.bError THEN
+			task1.eStatus := E_Status.Fault;
+		ELSIF task1.eModeSwitch = E_Modes.Manual AND NOT(task1.bStop) THEN
+			task1.bStart:=TRUE;
+		ELSIF task1.eModeSwitch = E_Modes.Auto AND NOT(task1.bStart) THEN
+			task1.eStatus:= E_Status.Ready;
+		ELSIF task1.eModeSwitch = E_Modes.Off THEN
+			task1.eStatus := E_Status.NotReady;
+		ELSIF task1.bStop THEN
+			task1.bStart:=FALSE;			
+			task1.eStatus := E_Status.Stopping;
+
+		END_IF
+	E_Status.Starting:							
+		task1.eStatus:= E_Status.Running;
+		IF task1.bError THEN
+			task1.eStatus := E_Status.Fault;
+		ELSIF task1.eModeSwitch = E_Modes.Off THEN
+			task1.eStatus := E_Status.NotReady;
+		END_IF
+	E_Status.Stopping:							
+		task1.eStatus := E_Status.Ready;
+		IF task1.bError THEN
+			task1.eStatus := E_Status.Fault;
+		ELSIF task1.eModeSwitch = E_Modes.Off THEN
+			task1.eStatus := E_Status.NotReady;
+		END_IF
+ELSE
+	task1.eStatus := E_Status.NotReady;
+END_CASE
+
+
+/////////////////////  JOYSTICK    //////////////////////////////////
+ 
+IF task1.eModeSwitch = E_Modes.Manual AND task1.eStatus = E_Status.Running THEN
+	fJoystickY := task1.fJoystickY;
+	fJoystickX := task1.fJoystickX;
+	
+ELSE
+	fJoystickY := 0.0;
+	fJoystickX := 0.0;
+END_IF
+
+
+
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

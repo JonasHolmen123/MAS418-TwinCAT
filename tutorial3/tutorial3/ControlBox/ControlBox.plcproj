@@ -17,6 +17,15 @@
     <LibraryReferences>{28df2311-dfbc-4181-9985-7d799f6a393e}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Controlbox\Interface\I_controlbox.TcIO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controlbox\Virtual Controlbox\FB_realcontrolbox.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controlbox\Virtual Controlbox\FB_virtualcontrolbox.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="GlobalTextList.TcGTLO">
       <SubType>Code</SubType>
     </Compile>
@@ -26,29 +35,29 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="task1\Virtual Controlbox\FB_Controlbox.TcPOU">
+    <Compile Include="Controlbox\Virtual Controlbox\FB_Controlbox.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="task1\Virtual Controlbox\FB_JoystickNorm.TcPOU">
+    <Compile Include="Controlbox\Virtual Controlbox\FB_JoystickNorm.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="task1\Virtual Controlbox\FB_VurtualControlBox.TcPOU">
+    <Compile Include="Controlbox\Virtual Controlbox\FB_VurtualControlBox.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="task1\Virtual Controlbox\E_Status.TcDUT">
+    <Compile Include="Controlbox\Virtual Controlbox\E_Status.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="task1\Virtual Controlbox\E_Modes.TcDUT">
+    <Compile Include="Controlbox\Virtual Controlbox\E_Modes.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="task1\Virtual Controlbox\ST_JoystickScaling.TcDUT">
+    <Compile Include="Controlbox\Virtual Controlbox\ST_JoystickScaling.TcDUT">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="task1\Virtual Controlbox\task1.TcGVL">
+    <Compile Include="Controlbox\Virtual Controlbox\task1.TcGVL">
       <SubType>Code</SubType>
       <LinkAlways>true</LinkAlways>
     </Compile>
-    <Compile Include="task1\Virtual Controlbox\Visualization.TcVIS">
+    <Compile Include="Controlbox\Virtual Controlbox\Visualization.TcVIS">
       <SubType>Code</SubType>
       <DependentUpon>Visualization Manager.TcVMO</DependentUpon>
     </Compile>
@@ -57,9 +66,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="task1" />
+    <Folder Include="Controlbox" />
     <Folder Include="POUs" />
-    <Folder Include="task1\Virtual Controlbox" />
+    <Folder Include="Controlbox\Interface" />
+    <Folder Include="Controlbox\Virtual Controlbox" />
   </ItemGroup>
   <ItemGroup>
     <PlaceholderReference Include="System_VisuElemMeter">

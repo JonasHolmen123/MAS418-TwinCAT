@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_realcontrolbox" Id="{684b9a4f-cee7-488b-a949-d1fe5216c95f}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_realcontrolbox IMPLEMENTS I_controlbox
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Buttons" Id="{13434b86-792c-487f-9b61-4ba600c4bae5}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD Buttons
+VAR_INPUT
+	eModes	: E_Modes;
+	eState	: E_States;
+END_VAR
+VAR_OUTPUT
+	bStart	: BOOL;
+	bStop	: BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Joystick" Id="{5301be79-c841-4db4-b709-15934a066227}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD Joystick
+VAR_INPUT
+	eModes	: E_Modes;
+	eState	: E_Status;
+END_VAR
+VAR_OUTPUT
+	fJoystickY	: LREAL;
+	fJoystickX	: LREAL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Lamps" Id="{b6637072-f1fd-496c-a4d6-c37fe870fa99}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD Lamps
+VAR_INPUT
+	eModes	: E_Modes;
+	eState	: E_States;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Mode" Id="{3830b441-1d0b-457e-943a-fb56cee8a098}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD Mode
+VAR_OUTPUT
+	eModes	: E_Modes;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="State" Id="{87af71cf-e011-49dd-a643-c815f87dfadf}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD State
+VAR_INPUT
+	eModes	: E_Modes;
+END_VAR
+VAR_OUTPUT
+	eState	: E_States;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

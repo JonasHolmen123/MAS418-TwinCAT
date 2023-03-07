@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_virtualcontrolbox" Id="{c3d567a2-0364-46b6-abf1-f7d5780ca3ed}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_virtualcontrolbox IMPLEMENTS I_controlbox
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <Method Name="Buttons" Id="{f96670f2-8b91-4b98-9165-02a66c437d6e}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD Buttons
+VAR_INPUT
+	eModes	: E_Modes;
+	eState	: E_Status;
+END_VAR
+VAR_OUTPUT
+	bStart	: BOOL;
+	bStop	: BOOL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Joystick" Id="{68aad3fc-be06-48ee-b777-54c32404975d}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD Joystick
+VAR_INPUT
+	eModes	: E_Modes;
+	eState	: E_Status;
+END_VAR
+VAR_OUTPUT
+	fJoystickY	: LREAL;
+	fJoystickX	: LREAL;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[IF task1.eModeSwitch = E_Modes.Manual AND task1.eStatus = E_Status.Running THEN
+	fJoystickY := task1.fJoystickY;
+	fJoystickX := task1.fJoystickX;
+	
+ELSE
+	fJoystickY := 0.0;
+	fJoystickX := 0.0;
+END_IF
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Lamps" Id="{50c3f17b-f54c-491c-bce6-25d3a290849b}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD Lamps
+VAR_INPUT
+	eModes	: E_Modes;
+	eState	: E_Status;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="Mode" Id="{55c75468-101e-4c0a-9ec4-3fb0739545c5}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD Mode
+VAR_OUTPUT
+	eModes	: E_Modes;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE eModes OF    
+	E_Modes.Off:
+		IF task1.bManual AND task1.bOn THEN
+			eModes := E_Modes.Manual;
+		ELSIF NOT(task1.bManual) AND task1.bOn THEN
+			eModes := E_Modes.Auto;
+		END_IF
+	E_Modes.Auto:
+		IF NOT(task1.bOn) THEN
+			eModes := E_Modes.Off;
+		ELSIF task1.bManual AND task1.bOn THEN
+			eModes := E_Modes.Manual;
+		END_IF
+	E_Modes.Manual:
+		IF NOT(task1.bOn) THEN
+			eModes := E_Modes.Off;
+		ELSIF NOT(task1.bManual) AND task1.bOn THEN
+			eModes := E_Modes.Auto;
+		END_IF
+ELSE
+		eModes := E_Modes.Off;
+END_CASE
+
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="State" Id="{360c04f4-7214-40ce-a7f1-9381c74332b9}">
+      <Declaration><![CDATA[{warning 'add method implementation '}
+METHOD State
+VAR_INPUT
+	eModes	: E_Modes;
+END_VAR
+VAR_OUTPUT
+	eState	: E_Status;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[CASE eState OF
+	E_Status.Fault:									
+		IF NOT(task1.bError) THEN
+			eState := E_Status.Ready;       
+		ELSIF eModes = E_Modes.Off THEN
+			eState := E_Status.NotReady;
+		END_IF										
+	E_Status.NotReady:
+		IF eModes = E_Modes.Manual OR eModes = E_modes.Auto THEN 
+			eState := E_Status.Ready;
+		END_IF
+	E_Status.Ready:										
+		IF task1.bStart THEN
+			eState:= E_Status.Starting;
+		ELSIF task1.bError THEN
+			eState := E_Status.Fault;
+		ELSIF eModes = E_Modes.Off THEN
+			eState := E_Status.NotReady;
+		END_IF
+	E_Status.Running:								
+		IF task1.bError THEN
+			eState := E_Status.Fault;
+		ELSIF eModes = E_Modes.Manual AND NOT(task1.bStop) THEN
+			task1.bStart:=TRUE;
+		ELSIF eModes = E_Modes.Auto AND NOT(task1.bStart) THEN
+			eState:= E_Status.Ready;
+		ELSIF eModes = E_Modes.Off THEN
+			eState := E_Status.NotReady;
+		ELSIF task1.bStop THEN
+			task1.bStart:=FALSE;			
+			eState := E_Status.Stopping;
+
+		END_IF
+	E_Status.Starting:							
+		eState:= E_Status.Running;
+		IF task1.bError THEN
+			eState := E_Status.Fault;
+		ELSIF eModes = E_Modes.Off THEN
+			eState := E_Status.NotReady;
+		END_IF
+	E_Status.Stopping:							
+		eState := E_Status.Ready;
+		IF task1.bError THEN
+			eState := E_Status.Fault;
+		ELSIF eModes = E_Modes.Off THEN
+			eState := E_Status.NotReady;
+		END_IF
+ELSE
+	eState := E_Status.NotReady;
+END_CASE]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>
