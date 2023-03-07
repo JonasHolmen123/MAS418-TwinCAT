@@ -13,6 +13,8 @@ VAR_GLOBAL
 	fJoystickX : LREAL;
 	fJoystickY : LREAL;
 	bError : BOOL := FALSE;
+	fJoyXNormalized : LREAL;
+	fJoyYNormalized : LREAL;
 END_VAR
 ]]></Declaration>
   </GVL>

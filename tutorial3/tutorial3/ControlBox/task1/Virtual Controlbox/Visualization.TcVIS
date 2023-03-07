@@ -2000,11 +2000,11 @@
                   <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
                     <o>
                       <v n="Id">1404881523L</v>
-                      <v n="Value" t="Single">-1</v>
+                      <v n="Value" t="Single">11787</v>
                     </o>
                     <o>
                       <v n="Id">3837067714L</v>
-                      <v n="Value" t="Single">1</v>
+                      <v n="Value" t="Single">20509</v>
                     </o>
                     <o>
                       <v n="Id">2867424708L</v>
@@ -2036,7 +2036,7 @@
                     </o>
                     <o>
                       <v n="Id">3841252171L</v>
-                      <v n="Value">"TOP_DOWN"</v>
+                      <v n="Value">"BOTTOM_UP"</v>
                     </o>
                     <o>
                       <v n="Id">2812299069L</v>
@@ -2052,19 +2052,19 @@
                     </o>
                     <o>
                       <v n="Id">1649127785L</v>
-                      <v n="Value">1378</v>
+                      <v n="Value">1374</v>
                     </o>
                     <o>
                       <v n="Id">357335551L</v>
-                      <v n="Value">632</v>
+                      <v n="Value">636</v>
                     </o>
                     <o>
                       <v n="Id">2422045748L</v>
-                      <v n="Value">65</v>
+                      <v n="Value">69</v>
                     </o>
                     <o>
                       <v n="Id">2134141914L</v>
-                      <v n="Value">264</v>
+                      <v n="Value">250</v>
                     </o>
                     <o>
                       <v n="Id">2985826283L</v>
@@ -2104,7 +2104,7 @@
                     </o>
                     <o>
                       <v n="Id">397264524L</v>
-                      <v n="Value">"task1.nJoyY"</v>
+                      <v n="Value">"task1.fJoystickY"</v>
                     </o>
                     <o>
                       <v n="Id">3352862552L</v>
@@ -2420,11 +2420,11 @@
                   <l n="VisualElemMemberList" t="VisualElemMemberCollection" cet="VisualElemMember">
                     <o>
                       <v n="Id">1404881523L</v>
-                      <v n="Value" t="Single">-1</v>
+                      <v n="Value" t="Single">11787</v>
                     </o>
                     <o>
                       <v n="Id">3837067714L</v>
-                      <v n="Value" t="Single">1</v>
+                      <v n="Value" t="Single">20509</v>
                     </o>
                     <o>
                       <v n="Id">2867424708L</v>
@@ -2524,7 +2524,7 @@
                     </o>
                     <o>
                       <v n="Id">397264524L</v>
-                      <v n="Value">"task1.nJoyX"</v>
+                      <v n="Value">"task1.fJoystickX"</v>
                     </o>
                     <o>
                       <v n="Id">3352862552L</v>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <POU Name="FB_Controlbox" Id="{2cd6bccb-390e-458d-b579-143a077dcf5b}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Controlbox
+VAR_INPUT
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	fbControlbox : FB_JoystickNorm;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[
+fbControlbox( fRawInput := task1.fJoystickX, fOutput => task1.fJoyXNormalized);
+fbControlbox( fRawInput := task1.fJoystickY, fOutput => task1.fJoyYNormalized);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -26,13 +26,22 @@
     <Compile Include="POUs\MAIN.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="task1\Virtual Controlbox\ControlBox.TcPOU">
+    <Compile Include="task1\Virtual Controlbox\FB_Controlbox.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="task1\Virtual Controlbox\FB_JoystickNorm.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="task1\Virtual Controlbox\FB_VurtualControlBox.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="task1\Virtual Controlbox\E_Status.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="task1\Virtual Controlbox\E_Modes.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="task1\Virtual Controlbox\ST_JoystickScaling.TcDUT">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="task1\Virtual Controlbox\task1.TcGVL">
