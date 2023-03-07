@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <Itf Name="I_ControlBox" Id="{ce76413b-7dd4-48d6-aab8-c5d88ae23c65}">
+    <Declaration><![CDATA[INTERFACE I_ControlBox
+]]></Declaration>
+  </Itf>
+</TcPlcObject>

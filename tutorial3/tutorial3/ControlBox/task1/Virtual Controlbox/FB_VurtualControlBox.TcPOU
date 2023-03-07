@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
   <POU Name="FB_VurtualControlBox" Id="{c124393c-9a45-48d1-993d-3fe0a50c48f8}" SpecialFunc="None">
-    <Declaration><![CDATA[FUNCTION_BLOCK FB_VurtualControlBox
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_VurtualControlBox IMPLEMENTS I_ControlBox
 VAR_INPUT
 END_VAR
 VAR_OUTPUT
@@ -97,7 +97,7 @@ END_CASE
 
 /////////////////////  JOYSTICK    //////////////////////////////////
  
-IF task1.eModeSwitch = E_Modes.Manual AND task1.eStatus = E_Status.Running THEN
+IF task1.eModeSwitch = E_Modes.Manual AND task1.eStatus = E_Status.Running AND task1.bTopSwitch THEN
 	fJoystickY := task1.fJoystickY;
 	fJoystickX := task1.fJoystickX;
 	

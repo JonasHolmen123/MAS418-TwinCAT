@@ -32,6 +32,9 @@
     <Compile Include="task1\Virtual Controlbox\FB_JoystickNorm.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="task1\Virtual Controlbox\FB_RealControlBox.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="task1\Virtual Controlbox\FB_VurtualControlBox.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -39,6 +42,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="task1\Virtual Controlbox\E_Modes.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="task1\Virtual Controlbox\I_ControlBox.TcIO">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="task1\Virtual Controlbox\ST_JoystickScaling.TcDUT">
